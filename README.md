@@ -55,34 +55,15 @@ Playbooks are automation blueprints, in `YAML` format, that Ansible uses to de
 A playbook is composed of one or more ‘plays’ in an ordered list. Each play executes part of the overall goal of the playbook, running one or more tasks. Each task calls an Ansible module.
 
 ```
-- name: Update web servers
-  hosts: webservers
-  remote_user: root
-
+- name: Print Hello World
+  hosts: 192.168.123.3
   tasks:
-  - name: Ensure apache is at the latest version
-    ansible.builtin.yum:
-      name: httpd
-      state: latest
-  - name: Write the apache config file
-    ansible.builtin.template:
-      src: /srv/httpd.j2
-      dest: /etc/httpd.conf
+    - name: Print Message
+      command: echo "Hello, World!"
+```
 
-- name: Update db servers
-  hosts: databases
-  remote_user: root
-
-  tasks:
-  - name: Ensure postgresql is at the latest version
-    ansible.builtin.yum:
-      name: postgresql
-      state: latest
-  - name: Ensure that postgresql is started
-    ansible.builtin.service:
-      name: postgresql
-      state: started
-
+```
+ansible-playbook hello_world.yml
 ```
 
 ## Conditionals
