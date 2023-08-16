@@ -48,6 +48,10 @@ Configuration file for Ansible
 $ ansible <pattern> -m <module_name> -a "<module options">
 ```
 
+```
+ansible -m ping all
+```
+
 ## Playbooks
 
 Playbooks are automation blueprints, in `YAML` format, that Ansible uses to deploy and configure nodes in an inventory.
